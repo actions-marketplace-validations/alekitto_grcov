@@ -1,9 +1,9 @@
-name: 'rust-grcov'
+name: 'grcov for Rust'
 description: 'Collect and aggregate code coverage information with the Mozilla grcov tool'
-author: 'actions-rs team'
+author: 'Alessandro Chitolina'
 branding:
   icon: play-circle
-  color: black
+  color: gray-dark
 inputs:
   config:
     description: Path to the configuration file (optional, relative to the repository root)
@@ -15,5 +15,5 @@ outputs:
     description: Absolute path to the generated code coverage file
 
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/index.js'

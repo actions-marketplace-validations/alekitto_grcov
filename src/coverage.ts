@@ -1,13 +1,13 @@
-const os = require('os');
-const fs = require('fs');
-const fsPromises = require('fs').promises;
-const path = require('path');
-
-const archiver = require('archiver');
-const glob = require('fast-glob');
-const toml = require('@iarna/toml');
-
 import * as core from '@actions/core';
+import * as fs from "node:fs";
+import * as path from "node:path";
+import * as os from "node:os";
+
+import archiver = require("archiver");
+import glob = require("fast-glob");
+import toml = require('@iarna/toml');
+
+const fsPromises = fs.promises;
 
 /**
  * Find all crate names for this one project.
@@ -24,10 +24,10 @@ async function getCrateNames(root: string): Promise<string[]> {
     // Also, this routine expects that `Cargo.lock` exists already,
     // which should be, because `cargo test` command will be invoked before that
     const lockContents = await fsPromises.readFile(path.join(root, 'Cargo.lock'));
-    const lock = toml.parse(lockContents);
+    const lock = toml.parse(lockContents.toString());
 
     let crates: string[] = [];
-    for (const pkg of (lock['package'] || [])) {
+    for (const pkg of (lock['package'] as any[] || [])) {
         if (!pkg.source) {
             crates.push(pkg.name);
         }

@@ -1,7 +1,6 @@
-const path = require('path');
-const process = require('process');
-const fs = require('fs').promises;
-
+import * as path from "node:path";
+import * as process from "node:process";
+import {promises as fs} from "node:fs";
 import * as yaml from 'js-yaml';
 import stringArgv from 'string-argv';
 import * as core from '@actions/core';

@@ -1,12 +1,10 @@
-const os = require('os');
-const path = require('path');
-
 import * as core from '@actions/core';
+import * as configuration from './configuration';
 import * as io from '@actions/io';
 import * as exec from '@actions/exec';
+import * as path from "node:path";
+import * as os from "node:os";
 import {Cargo} from '@actions-rs/core';
-
-import * as configuration from './configuration';
 
 export class Grcov {
     private readonly path: string;

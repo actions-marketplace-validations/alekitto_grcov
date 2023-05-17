@@ -1,8 +1,7 @@
 import * as core from '@actions/core';
-
-import * as grcov from './grcov';
 import * as configuration from './configuration';
 import * as coverage from './coverage';
+import * as grcov from './grcov';
 
 async function run() {
     const config = await configuration.load();
@@ -25,7 +24,7 @@ async function main() {
     try {
         await run();
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed((error as Error).message);
     }
 }
 
