@@ -1,7 +1,7 @@
 import * as path from "node:path";
 import * as process from "node:process";
 import {promises as fs} from "node:fs";
-import * as yaml from 'js-yaml';
+import {load as yaml_load} from 'js-yaml';
 import stringArgv from 'string-argv';
 import * as core from '@actions/core';
 import {input} from '@actions-rs/core';
@@ -94,7 +94,7 @@ Did you forgot to checkout the code first?');
 async function loadUser(path: string): Promise<User> {
     let contents = {};
     try {
-        contents = yaml.safeLoad(await fs.readFile(path));
+        contents = yaml_load(await fs.readFile(path));
     } catch (error) {
         core.info(`Unable to load grcov config from the ${path}, falling back to defaults. ${error}`);
     }
