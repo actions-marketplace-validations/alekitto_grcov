@@ -31,7 +31,7 @@ jobs:
           CARGO_INCREMENTAL: '0'
           RUSTFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
           RUSTDOCFLAGS: '-Zprofile -Ccodegen-units=1 -Cinline-threshold=0 -Clink-dead-code -Coverflow-checks=off -Cpanic=abort -Zpanic_abort_tests'
-      - uses: actions-rs/grcov@v0.1
+      - uses: alekitto/grcov@v0.2
 ```
 
 ## Usage
@@ -81,7 +81,7 @@ jobs:
 
     ```yaml
     - id: coverage  
-      uses: actions-rs/grcov@v0.1
+      uses: alekitto/grcov@v0.2
     ```
 
 6. After the successful execution, `actions-rs@grcov`
@@ -114,7 +114,7 @@ By default this Action tries to load it from the `.github/actions-rs/grcov.yml` 
 (relative to the repository root directory); you can change file location with the [`config`](#inputs) input, ex.
 
 ```yaml
-- uses: actions-rs/grcov@v0.1
+- uses: alekitto/grcov@v0.2
   with:
     config: configs/grcov.yml
 ```
